@@ -1,0 +1,253 @@
+* {
+    box-sizing: border-box;
+}
+html, body {
+    padding: 0;
+    margin: 0;
+    line-height: 1.5;
+    color: #222;
+    font-family: "Lato", "Helvetica-Neue", Helvetica, Arial, sans-serif;
+    min-height: 100%;
+    font-size: 20px;
+    font-weight: 300;
+    background: #094ce4;
+}
+
+p, h1, h2 {
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+h2 {
+    font-size: 30px;
+    font-weight: 300;
+}
+h2 span {
+    color: #094ce4;
+    font-weight: normal;
+}
+
+input {
+    border: none;
+    border-bottom: 1px solid #CCC;
+    padding: 0.5em 0;
+    display: block;
+    width: 100%;
+    box-shadow: none !important;
+    outline: none !important;
+    font-size: 20px;
+    font-weight: 300;
+    margin-bottom: 10px;
+}
+button {
+    background: #094ce4;
+    border: none;
+    padding: 0.8em 1.2em;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #FFF;
+    cursor: pointer;
+    transition: background .2s ease;
+}
+button:hover {
+    background: #1a46ab;
+}
+
+.container {
+    width: 100%;
+    overflow: hidden;
+}
+
+.hero {
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    width: 100%;
+    top: 0;
+    height: 100%;
+    background: #094ce4;
+}
+.hero--content {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 40px;
+    width: 86%;
+    max-width: 380px;
+    height: 220px;
+    overflow: visible;
+    line-height: 1.3;
+}
+.hero--content p {
+    margin: 0;
+}
+.hero--assistant {
+    font-weight: 400;
+    color: #FFF;
+}
+.hero--phrases {
+    display: none;
+}
+.hero--phrase {
+    color: #FFF;
+}
+
+.scroll-indicator {
+    position: fixed;
+    z-index: 4;
+    left: 50%;
+    bottom: 50px;
+    transform: translateX(-50%);
+    color: #FFF;
+    cursor: pointer;
+    font-size: 50px;
+    line-height: 0;
+}
+.chevron::before {
+	border-color: #FFF;
+	border-style: solid;
+	border-width: 0.05em 0.05em 0 0;
+	content: '';
+	display: inline-block;
+	height: 0.45em;
+	position: relative;
+    top: 0;
+    transform: rotate(135deg);
+	vertical-align: top;
+	width: 0.45em;
+}
+
+.main-bg {
+    position: fixed;
+    z-index: 3;
+    left: 440px;
+    top: -50px;
+    width: 120%;
+    bottom: -50px;
+    background: #FFF;
+    transform: translateX(100%) rotate(-3deg);
+}
+.main {
+    position: relative;
+    margin: 0 0 0 440px;
+    z-index: 3;
+}
+
+.content {
+    padding: 160px 120px;
+    min-height: 110vh;
+    max-width: 860px;
+}
+@media (max-width: 1300px) {
+    .content { padding: 80px 70px; }
+}
+@media (max-width: 1100px) {
+    .content { padding: 80px 60px; }
+}
+.content--lede {
+    opacity: 0;
+    font-size: 40px;
+    transform: translateY(200px);
+}
+.content--lede span {
+    font-weight: 400;
+    color: #094ce4;
+}
+.content--main {
+    opacity: 0;
+    transform: translateY(200px);
+}
+
+/* Scroll transitions */
+.hero {
+    transition: width 1s ease .5s;
+}
+.main-bg {
+    transition: transform .7s ease .5s;
+}
+.content--lede {
+    transition: transform .5s ease 0s, opacity .5s ease 0s;
+}
+.content--main {
+    transition: transform .5s ease 0s, opacity .5s ease 0s;
+}
+.scroll-indicator {
+    transition: opacity .3s ease;
+}
+
+.is-scrolled .hero {
+    width: 440px;
+    transition-duration: .7s;
+    transition-delay: 0s;
+}
+.is-scrolled .scroll-indicator {
+    opacity: 0;
+}
+.is-scrolled .main-bg {
+    transition-delay: .3s;
+    transform: translateX(0) rotate(3deg);
+}
+.is-scrolled .content--lede {
+    transform: translateY(0);
+    transition-delay: .9s;
+    opacity: 1;
+}
+.is-scrolled .content--main {
+    transform: translateY(0);
+    transition-delay: 1.1s;
+    transition-duration: .8s;
+    opacity: 1;
+}
+
+@media (max-width: 980px) {
+    .hero {
+        position: relative;
+        width: 100% !important;
+        height: auto;
+        padding: 23% 0 19%;
+    }
+    .hero:after {
+        content: "";
+        position: absolute;
+        display: block;
+        bottom: -50px;
+        background: #FFF;
+        width: 120%;
+        left: -10%;
+        height: 100px;
+        transform: rotate(-2deg);
+    }
+    .hero--content {
+        position: static;
+        transform: translate(0, 0);
+        font-size: 40px;
+        height: 250px;
+        margin: auto;
+    }
+    .scroll-indicator {
+        display: none;
+    }
+    .main {
+        position: static;
+        margin: 0;
+        background: #FFF;
+    }
+    .main-bg {
+        display: none;
+    }
+    .content {
+        padding: 100px 0;
+        width: 84%;
+        margin: auto;
+        min-height: auto;
+    }
+    .content--lede {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    .content--main {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
